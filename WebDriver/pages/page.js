@@ -1,5 +1,5 @@
 const {Builder} = require('selenium-webdriver');
-const {Options} = require('selenium-webdriver/chrome');
+const {Options, ServiceBuilder} = require('selenium-webdriver/chrome');
 
 class Page {
   constructor() {
@@ -7,8 +7,9 @@ class Page {
   }
 
   static initBrowser() {
-    const options = new Options().setChromeBinaryPath('/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta');
-    return new Builder().forBrowser('chrome').setChromeOptions(options).build();
+    const options = new Options().addArguments('--log-level=3');
+    const service = new ServiceBuilder('bin/chromedriver');
+    return new Builder().forBrowser('chrome').setChromeOptions(options).setChromeService(service).build();
   }
 
   async open(url) {

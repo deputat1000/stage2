@@ -1,23 +1,25 @@
 const {expect} = require('chai');
-const NewPastePage = require('../../pages/NewPastePage');
+const PastePage = require('../../pages/PastePage');
 
 describe('Bring It On', () => {
   const code = 
   `git config --global user.name  "New Sheriff in Town"
   git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
-  git push origin master --force`,
-    syntax = 'Bash',
-    name = 'how to gain dominance among developers';
+  git push origin master --force`;
+  const syntax = 'Bash';
+  const name = 'how to gain dominance among developers';
+
+  let page;
 
   before(async() => {
-    page = new NewPastePage();
+    page = new PastePage();
     await page.open();
-    await page.createPaste(code, name);
+    await page.createPaste(code, name, syntax);
   });
 
-  it('should create new paste with entered name', async() => {
-    const pasteName = await page.getPasteName();
-    expect(pasteName).to.be.equal(name);
+  it('the page title should match the entered name', async() => {
+    const title = await page.getTitle();
+    expect(title).to.include(name);
   });
 
   it('should create new paste with selected syntax', async() => {
@@ -32,6 +34,5 @@ describe('Bring It On', () => {
 
   after(async() => {
     await page.close();
-    page = null;
   });
 });

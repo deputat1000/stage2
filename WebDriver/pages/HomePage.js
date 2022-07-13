@@ -1,5 +1,5 @@
-const {By} = require('selenium-webdriver');
-const Page = require('./page');
+const {By, until} = require('selenium-webdriver');
+const Page = require('./Page');
 
 class HomePage extends Page {
   constructor() {
@@ -16,12 +16,18 @@ class HomePage extends Page {
 
   async open() {
     await super.open('https://pastebin.com');
+    await this.hideBottomBanner();
   }
 
-  async createPaste(code, name) {
+  async hideBottomBanner() {
+    await this.driver.wait(until.elementLocated(By.xpath(`//*[@style='bottom: 105px;']`)));
+    await this.driver.findElement(By.id('hideSlideBanner')).click();
+  }
+  
+  async createPaste(code, name, syntax) {
     await this.driver.findElement(this.pasteCode).sendKeys(code);
     
-    if (name !== 'helloweb') {
+    if (syntax) {
       await this.driver.findElement(this.pasteSyntax).click();
       await this.driver.findElement(this.bash).click();
     }
@@ -30,6 +36,7 @@ class HomePage extends Page {
     await this.driver.findElement(this.min10).click();
     await this.driver.findElement(this.pasteName).sendKeys(name);
     await this.driver.findElement(this.createButton).click();
+    await this.driver.wait(until.titleContains(name), 5000);
   }
 }
 

@@ -1,10 +1,13 @@
-const NewPaste = require('../../pages/NewPastePage');
+const HomePage = require('../../pages/HomePage');
 
 describe('I Can Win', () => {
-  const code = 'Hello from WebDriver', name = 'helloweb';
+  const code = 'Hello from WebDriver';
+  const name = 'helloweb';
+
+  let page;
 
   before(async() => {
-    page = new NewPaste();
+    page = new HomePage();
     await page.open();
     await page.createPaste(code, name);
   });
@@ -13,6 +16,5 @@ describe('I Can Win', () => {
   
   after(async() => {
     await page.close();
-    page = null;
   });
 });

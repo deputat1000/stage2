@@ -8,6 +8,7 @@ describe('I Can Win', () => {
 
   before(async() => {
     page = new HomePage();
+    
     await page.open();
     await page.createPaste(code, name);
   });

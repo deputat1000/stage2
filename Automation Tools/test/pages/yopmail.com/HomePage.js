@@ -1,14 +1,14 @@
 const Page = require('../Page');
 
 class HomePage extends Page {
-  get emailGenBtn() { return $(`//a[@href='email-generator']`) }
+  get emailGeneratorButton() { return $(`//a[@href='email-generator']`) }
 
-  async openEmailService() {
+  async open() {
     await browser.newWindow('https://yopmail.com');
   }
   
   async generateEmail() {
-    await this.emailGenBtn.click();
+    await this.emailGeneratorButton.click();
   }
 }
 

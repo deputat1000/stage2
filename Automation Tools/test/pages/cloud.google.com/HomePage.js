@@ -1,7 +1,7 @@
 const Page = require('../Page');
 
 class HomePage extends Page {
-  get searchBtn() { return $('.devsite-search-form') }
+  get searchButton() { return $('.devsite-search-form') }
   get searchBox() { return $(`//input[@aria-label='Search']`) }
 
   async open() {
@@ -9,7 +9,7 @@ class HomePage extends Page {
   }
   
   async search() {
-    await this.searchBtn.click();
+    await this.searchButton.click();
     await this.searchBox.setValue('Google Cloud Platform Pricing Calculator');
     await browser.keys('Return');
   }

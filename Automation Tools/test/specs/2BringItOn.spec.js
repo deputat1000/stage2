@@ -12,6 +12,7 @@ describe('Bring It On', () => {
 
   before(async() => {
     page = new PastePage();
+    
     await page.open();
     await page.createPaste(code, name, syntax);
   });

@@ -1,16 +1,16 @@
 const HomePage = require('./HomePage');
 
 class GeneratorPage extends HomePage {
-  get copyEmailBtn() { return $('#cprnd') }
-  get checkInboxBtn() { return $(`//button[@onclick='egengo();']`) }
+  get copyEmailButton() { return $('#cprnd') }
+  get checkInboxButton() { return $(`//button[@onclick='egengo();']`) }
 
   async copyEmail() {
-    await this.copyEmailBtn.click();
+    await this.copyEmailButton.click();
     await browser.switchWindow('cloud.google.com');
   }
 
   async checkInbox() {
-    await this.checkInboxBtn.click();
+    await this.checkInboxButton.click();
   }
 }
 

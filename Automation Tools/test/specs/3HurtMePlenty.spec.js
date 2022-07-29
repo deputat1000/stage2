@@ -1,4 +1,4 @@
-const CalcPage = require('../pages/cloud.google.com/CalculatorPage');
+const CalculatorPage = require('../pages/cloud.google.com/CalculatorPage');
 
 describe('Hurt Me Plenty', () => {
   const vmClass = 'Regular';
@@ -10,7 +10,7 @@ describe('Hurt Me Plenty', () => {
   let page;
 
   before(async() => {
-    page = new CalcPage();
+    page = new CalculatorPage();
     
     await page.open();
     await page.search();

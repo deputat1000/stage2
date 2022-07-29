@@ -43,69 +43,69 @@ class CalculatorPage extends SearchPage {
 
   async addToEstimate() {
     await this.switchFrames();
-    await super.waitAndClick(this.computeEngine);
+    await this.waitAndClick(this.computeEngine);
     await this.instanceNumber.setValue('4');
-    await super.waitAndClick(this.osList);
-    await super.waitAndClick(this.freeOS);
-    await super.waitAndClick(this.modelList);
-    await super.waitAndClick(this.regular);
-    await super.waitAndClick(this.seriesList);
-    await super.waitAndClick(this.n1);
-    await super.waitAndClick(this.typeList);
-    await super.waitAndClick(this.n1standart8);
-    await super.waitAndClick(this.addGPU);
+    await this.waitAndClick(this.osList);
+    await this.waitAndClick(this.freeOS);
+    await this.waitAndClick(this.modelList);
+    await this.waitAndClick(this.regular);
+    await this.waitAndClick(this.seriesList);
+    await this.waitAndClick(this.n1);
+    await this.waitAndClick(this.typeList);
+    await this.waitAndClick(this.n1standart8);
+    await this.waitAndClick(this.addGPU);
     await this.gpuFormReady.waitForExist();
-    await super.waitAndClick(this.gpuTypeList);
-    await super.waitAndClick(this.teslaV100);
-    await super.waitAndClick(this.gpuNumberList);
-    await super.waitAndClick(this.gpu1);
-    await super.waitAndClick(this.ssdList);
-    await super.waitAndClick(this.ssd2x375);
-    await super.waitAndClick(this.locationList);
-    await super.waitAndClick(this.frankfurt);
-    await super.waitAndClick(this.usageList);
-    await super.waitAndClick(this.year1);
-    await super.waitAndClick(this.addButton);
+    await this.waitAndClick(this.gpuTypeList);
+    await this.waitAndClick(this.teslaV100);
+    await this.waitAndClick(this.gpuNumberList);
+    await this.waitAndClick(this.gpu1);
+    await this.waitAndClick(this.ssdList);
+    await this.waitAndClick(this.ssd2x375);
+    await this.waitAndClick(this.locationList);
+    await this.waitAndClick(this.frankfurt);
+    await this.waitAndClick(this.usageList);
+    await this.waitAndClick(this.year1);
+    await this.waitAndClick(this.addButton);
   }
 
   async getVMClass() {
-    const vmClassText = await super.getText(this.vmClass);
+    const vmClassText = await this.getText(this.vmClass);
     return vmClassText;
   }
 
   async getInstanceType() {
-    const instanceTypeText = await super.getText(this.instanceType);
+    const instanceTypeText = await this.getText(this.instanceType);
     return instanceTypeText;
   }
 
   async getRegion() {
-    const regionText = await super.getText(this.region);
+    const regionText = await this.getText(this.region);
     return regionText;
   }
   
   async getLocalSSD() {
-    const localSSDText = await super.getText(this.localSSD);
+    const localSSDText = await this.getText(this.localSSD);
     return localSSDText;
   }
 
   async getCommitmentTerm() {
-    const commitmentTermText = await super.getText(this.commitmentTerm);
+    const commitmentTermText = await this.getText(this.commitmentTerm);
     return commitmentTermText;
   }
 
   async getCost() {
     await this.switchFrames();
-    const cost = parseFloat((await super.getText(this.cost)).replace(/^\D+|,/g, ''));
+    const cost = parseFloat((await this.getText(this.cost)).replace(/^\D+|,/g, ''));
     return cost;
   }
 
   async sendEmail() {
     await this.switchFrames();
-    await super.waitAndClick(this.emailEstimateButton);
+    await this.waitAndClick(this.emailEstimateButton);
     await this.emailFormReady.waitForExist();
-    await super.waitAndClick(this.emailInputField);
+    await this.waitAndClick(this.emailInputField);
     await browser.keys(['Shift', 'Insert']);
-    await super.waitAndClick(this.sendEmailButton);
+    await this.waitAndClick(this.sendEmailButton);
     await browser.switchWindow('yopmail.com');
   }
 }

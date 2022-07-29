@@ -11,15 +11,15 @@ class SearchPage extends HomePage {
     
     while (await incorrectResult.isDisplayed()) {
       await browser.reloadSession();
-      await super.open();
-      await super.search();
+      await this.open();
+      await this.search();
       await test;
     }
   }
 
   async select() {
     await this.handleSearchResult();
-    await super.waitAndClick(this.calculator);
+    await this.waitAndClick(this.calculator);
   }
 }
 

@@ -5,12 +5,12 @@ class PastePage extends HomePage {
   get code() { return $(`//textarea[@class='textarea -raw js-paste-raw']`) }
 
   async getPasteSyntax() {
-    const syntaxText = await super.getText(this.syntax);
+    const syntaxText = await this.getText(this.syntax);
     return syntaxText;
   }
   
   async getPasteCode() {
-    const codeText = await super.getText(this.code);
+    const codeText = await this.getText(this.code);
     return codeText;
   }
 }

@@ -22,7 +22,7 @@ class HomePage extends Page {
 
     if (await hidden.isExisting()) {
       await visible.waitForExist();
-      await super.waitAndClick(hideButton);
+      await this.waitAndClick(hideButton);
     }
   }
   
@@ -30,14 +30,14 @@ class HomePage extends Page {
     await this.pasteCode.setValue(code);
     
     if (syntax) {
-      await super.waitAndClick(this.syntaxList);
-      await super.waitAndClick(this.bash);
+      await this.waitAndClick(this.syntaxList);
+      await this.waitAndClick(this.bash);
     }
 
-    await super.waitAndClick(this.expirationList);
-    await super.waitAndClick(this.min10);
+    await this.waitAndClick(this.expirationList);
+    await this.waitAndClick(this.min10);
     await this.pasteName.setValue(name);
-    await super.waitAndClick(this.createButton);
+    await this.waitAndClick(this.createButton);
     await browser.waitUntil(EC.titleContains(name));
   }
 }

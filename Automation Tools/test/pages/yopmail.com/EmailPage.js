@@ -3,14 +3,13 @@ const GeneratorPage = require('./GeneratorPage');
 class EmailPage extends GeneratorPage {
   get inbox() { return $(`//iframe[@id='ifinbox' and @state='full']`) }
   get message() { return $(`//button[@class='lm']`) }
-  get refreshButton() { return $(`#refresh`) }
   get cost() { return $(`//h3[contains(text(), 'USD')]`) }
 
   async checkInbox() {
     await super.checkInbox();
 
     while(!await this.inbox.isDisplayed()) {
-      await this.waitAndClick(this.refreshButton);
+      await browser.refresh();
     }
   }
 

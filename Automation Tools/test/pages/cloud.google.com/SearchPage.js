@@ -3,17 +3,16 @@ const HomePage = require('./HomePage');
 
 class SearchPage extends HomePage {
   get calculator() { return $(`//a[@data-ctorig='https://cloud.google.com/products/calculator']`) }
-  
+  get incorrectResult() { return $('//aside') }
 
   async handleSearchResult() {
-    const incorrectResult = $('//aside');
-    const test = await browser.waitUntil(EC.or(EC.elementToBeClickable(this.calculator), EC.visibilityOf(incorrectResult)));
+    await browser.waitUntil(EC.or(EC.elementToBeClickable(this.calculator), EC.visibilityOf(this.incorrectResult)));
     
-    while (await incorrectResult.isDisplayed()) {
+    while (await this.incorrectResult.isDisplayed()) {
       await browser.reloadSession();
       await this.open();
       await this.search();
-      await test;
+      await this.handleSearchResult();
     }
   }
 
